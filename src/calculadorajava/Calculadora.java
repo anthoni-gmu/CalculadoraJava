@@ -1,16 +1,31 @@
 
 package calculadorajava;
 
+import com.sun.awt.AWTUtilities;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class Calculadora extends javax.swing.JFrame {
+    
+    int x,y;
     
     ScriptEngineManager sem=new ScriptEngineManager(); 
     ScriptEngine se =  sem.getEngineByName("JavaScript");
     
     public Calculadora() {
+       
         initComponents();
+        this.setLocationRelativeTo(null);
+        Shape forma = new RoundRectangle2D.Double(0,0,this.getBounds().width,this.getBounds().height,30,30);
+        AWTUtilities.setWindowShape(this, forma);
         setLocationRelativeTo(null);
     }
 
@@ -43,8 +58,14 @@ public class Calculadora extends javax.swing.JFrame {
         btn_0 = new javax.swing.JButton();
         btn_punto = new javax.swing.JButton();
         btn_c = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -54,20 +75,20 @@ public class Calculadora extends javax.swing.JFrame {
         texOperacion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         texOperacion.setForeground(new java.awt.Color(49, 60, 70));
         texOperacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(texOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 34, 328, 29));
+        jPanel1.add(texOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 328, 29));
 
         txtResultado.setFont(new java.awt.Font("Roboto Black", 1, 48)); // NOI18N
         txtResultado.setForeground(new java.awt.Color(49, 60, 70));
         txtResultado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 328, 49));
+        jPanel1.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 330, 49));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 150));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 340, 150));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_igual.setBackground(new java.awt.Color(49, 60, 70));
-        btn_igual.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
+        btn_igual.setFont(new java.awt.Font("Montserrat Medium", 0, 36)); // NOI18N
         btn_igual.setForeground(new java.awt.Color(255, 255, 255));
         btn_igual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn3.png"))); // NOI18N
         btn_igual.setText("=");
@@ -84,7 +105,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_igual, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 50, 50));
 
         btn_9.setBackground(new java.awt.Color(49, 60, 70));
-        btn_9.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_9.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_9.setForeground(new java.awt.Color(49, 60, 70));
         btn_9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_9.setText("9");
@@ -101,7 +122,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 50, 50));
 
         btn_expo.setBackground(new java.awt.Color(49, 60, 70));
-        btn_expo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_expo.setFont(new java.awt.Font("Montserrat Medium", 1, 36)); // NOI18N
         btn_expo.setForeground(new java.awt.Color(49, 60, 70));
         btn_expo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_expo.setText("^");
@@ -118,7 +139,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_expo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 50, 50));
 
         btn_porsentaje.setBackground(new java.awt.Color(49, 60, 70));
-        btn_porsentaje.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_porsentaje.setFont(new java.awt.Font("Montserrat Medium", 1, 36)); // NOI18N
         btn_porsentaje.setForeground(new java.awt.Color(49, 60, 70));
         btn_porsentaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_porsentaje.setText("%");
@@ -135,7 +156,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_porsentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, 50));
 
         btn_div.setBackground(new java.awt.Color(49, 60, 70));
-        btn_div.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_div.setFont(new java.awt.Font("Montserrat Medium", 1, 36)); // NOI18N
         btn_div.setForeground(new java.awt.Color(49, 60, 70));
         btn_div.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_div.setText("/");
@@ -152,7 +173,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_div, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 50, 50));
 
         btn_mult.setBackground(new java.awt.Color(49, 60, 70));
-        btn_mult.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_mult.setFont(new java.awt.Font("Montserrat Medium", 1, 36)); // NOI18N
         btn_mult.setForeground(new java.awt.Color(49, 60, 70));
         btn_mult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_mult.setText("x");
@@ -169,7 +190,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_mult, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 50, 50));
 
         btn_resta.setBackground(new java.awt.Color(49, 60, 70));
-        btn_resta.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_resta.setFont(new java.awt.Font("Montserrat Medium", 1, 36)); // NOI18N
         btn_resta.setForeground(new java.awt.Color(49, 60, 70));
         btn_resta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_resta.setText("-");
@@ -186,7 +207,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_resta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 50, 50));
 
         btn_suma.setBackground(new java.awt.Color(49, 60, 70));
-        btn_suma.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_suma.setFont(new java.awt.Font("Montserrat Medium", 1, 36)); // NOI18N
         btn_suma.setForeground(new java.awt.Color(49, 60, 70));
         btn_suma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_suma.setText("+");
@@ -203,7 +224,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_suma, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 50, 50));
 
         btn_reg.setBackground(new java.awt.Color(49, 60, 70));
-        btn_reg.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_reg.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_reg.setForeground(new java.awt.Color(49, 60, 70));
         btn_reg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_reg.setText("<-");
@@ -220,7 +241,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 50, 50));
 
         btn_7.setBackground(new java.awt.Color(49, 60, 70));
-        btn_7.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_7.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_7.setForeground(new java.awt.Color(49, 60, 70));
         btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_7.setText("7");
@@ -237,7 +258,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 50));
 
         btn_8.setBackground(new java.awt.Color(49, 60, 70));
-        btn_8.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_8.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_8.setForeground(new java.awt.Color(49, 60, 70));
         btn_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_8.setText("8");
@@ -254,7 +275,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 50, 50));
 
         btn_4.setBackground(new java.awt.Color(49, 60, 70));
-        btn_4.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_4.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_4.setForeground(new java.awt.Color(49, 60, 70));
         btn_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_4.setText("4");
@@ -271,7 +292,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 50, 50));
 
         btn_5.setBackground(new java.awt.Color(49, 60, 70));
-        btn_5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_5.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_5.setForeground(new java.awt.Color(49, 60, 70));
         btn_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_5.setText("5");
@@ -288,7 +309,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 50, 50));
 
         btn_6.setBackground(new java.awt.Color(49, 60, 70));
-        btn_6.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_6.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_6.setForeground(new java.awt.Color(49, 60, 70));
         btn_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_6.setText("6");
@@ -305,7 +326,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 50, 50));
 
         btn_1.setBackground(new java.awt.Color(49, 60, 70));
-        btn_1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_1.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_1.setForeground(new java.awt.Color(49, 60, 70));
         btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_1.setText("1");
@@ -322,7 +343,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 50, 50));
 
         btn_2.setBackground(new java.awt.Color(49, 60, 70));
-        btn_2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_2.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_2.setForeground(new java.awt.Color(49, 60, 70));
         btn_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_2.setText("2");
@@ -339,7 +360,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 50, 50));
 
         btn_3.setBackground(new java.awt.Color(49, 60, 70));
-        btn_3.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_3.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_3.setForeground(new java.awt.Color(49, 60, 70));
         btn_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_3.setText("3");
@@ -356,7 +377,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 50, 50));
 
         btn_0.setBackground(new java.awt.Color(49, 60, 70));
-        btn_0.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_0.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_0.setForeground(new java.awt.Color(49, 60, 70));
         btn_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_0.setText("0");
@@ -373,7 +394,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 50, 50));
 
         btn_punto.setBackground(new java.awt.Color(49, 60, 70));
-        btn_punto.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_punto.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_punto.setForeground(new java.awt.Color(49, 60, 70));
         btn_punto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn2.png"))); // NOI18N
         btn_punto.setText(".");
@@ -390,7 +411,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.add(btn_punto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 50, 50));
 
         btn_c.setBackground(new java.awt.Color(49, 60, 70));
-        btn_c.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btn_c.setFont(new java.awt.Font("Montserrat Medium", 1, 24)); // NOI18N
         btn_c.setForeground(new java.awt.Color(49, 60, 70));
         btn_c.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btn1.png"))); // NOI18N
         btn_c.setText("C");
@@ -406,7 +427,52 @@ public class Calculadora extends javax.swing.JFrame {
         });
         jPanel2.add(btn_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 340, 410));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 340, 410));
+
+        jPanel4.setBackground(new java.awt.Color(202, 229, 230));
+        jPanel4.setForeground(new java.awt.Color(202, 229, 230));
+        jPanel4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel4MouseDragged(evt);
+            }
+        });
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel4MousePressed(evt);
+            }
+        });
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("●");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 30, 50));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel3.setText("●");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -10, 30, 50));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/light.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 30, 20));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -517,6 +583,75 @@ public class Calculadora extends javax.swing.JFrame {
        texOperacion.setText("");
         txtResultado.setText("");
     }//GEN-LAST:event_btn_cActionPerformed
+boolean modoOscuro = false;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        
+       if(!modoOscuro){
+           
+           
+           
+            jPanel4.setBackground(Color.decode("#3a4655"));
+            jPanel1.setBackground(Color.decode("#152740"));
+        jPanel2.setBackground(Color.decode("#243651"));
+        txtResultado.setForeground(Color.decode("#00bc8b"));
+        texOperacion.setForeground(Color.decode("#00cf94"));
+        
+        CambiarColorCat1(btn_1);
+        CambiarColorCat1(btn_2);
+        CambiarColorCat1(btn_3);
+        CambiarColorCat1(btn_4);
+        CambiarColorCat1(btn_5);
+        CambiarColorCat1(btn_6);
+        CambiarColorCat1(btn_7);
+        CambiarColorCat1(btn_8);
+        CambiarColorCat1(btn_9);
+        CambiarColorCat1(btn_0);
+        CambiarColorCat1(btn_punto);
+        
+        
+        CambiarColorCat2(btn_suma);
+        CambiarColorCat2(btn_div);
+        CambiarColorCat2(btn_expo);
+        CambiarColorCat2(btn_mult);
+        CambiarColorCat2(btn_porsentaje);
+        CambiarColorCat2(btn_reg);
+        CambiarColorCat2(btn_resta);
+        CambiarColorCat2(btn_c);
+        
+        
+        jButton1.setIcon(new ImageIcon(getClass().getResource("/imagenes/dark.png")));
+         
+         btn_igual.setIcon(new ImageIcon(getClass().getResource("/imagenes/btndark_igual.png")));
+        btn_igual.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/btndark1-press.png")));
+        btn_igual.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/btndark1.png")));
+        btn_igual.setForeground(Color.decode("#26324f"));
+        modoOscuro = true;
+       }else{
+           Calculadora frame = new Calculadora();
+           this.dispose();
+           frame.setVisible(modoOscuro);
+       }
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
+       x=evt.getX();
+       y=evt.getY();
+    }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
+        Point p = MouseInfo.getPointerInfo().getLocation();
+        this.setLocation(p.x-x,p.y-y);
+    }//GEN-LAST:event_jPanel4MouseDragged
 
     /** 
      * @param args the command line arguments
@@ -560,6 +695,20 @@ public class Calculadora extends javax.swing.JFrame {
     public void Error(String error){
          txtResultado.setText("Error");
     }
+    
+    public void CambiarColorCat1(JButton btn){
+         btn.setIcon(new ImageIcon(getClass().getResource("/imagenes/btndark2.png")));
+        btn.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/btndark2.png")));
+        btn.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/btndark1.png")));
+        btn.setForeground(Color.decode("#a6c1b3"));
+    }
+    
+    public void CambiarColorCat2(JButton btn){
+        btn.setIcon(new ImageIcon(getClass().getResource("/imagenes/btndark1.png")));
+        btn.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/btndark1.png")));
+        btn.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/btndark1-press.png")));
+        btn.setForeground(Color.decode("#00cf94"));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_0;
     private javax.swing.JButton btn_1;
@@ -581,8 +730,12 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton btn_reg;
     private javax.swing.JButton btn_resta;
     private javax.swing.JButton btn_suma;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel texOperacion;
     private javax.swing.JLabel txtResultado;
     // End of variables declaration//GEN-END:variables
